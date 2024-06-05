@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation d'hôtel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Réservation d'hôtel</h1>
+    <div class="container"> 
+        <form id="reservationForm">
+            <table>
+                <tr>
+                    <td><label for="stayLocation">Lieu de séjour</label></td>
+                    <td><input type="text" id="stayLocation" name="stayLocation" oninput="updateSummary()"></td>
+                </tr>
+                <tr>
+                    <td><label for="checkInDate">Date de début</label></td>
+                    <td><input type="date" id="checkInDate" name="checkInDate" oninput="updateSummary()"></td>
+                </tr>
+                <tr>
+                    <td><label for="checkOutDate">Date de fin</label></td>
+                    <td><input type="date" id="checkOutDate" name="checkOutDate" oninput="updateSummary()"></td>
+                </tr>
+                <tr>
+                    <td><label for="adults">Adultes</label></td>
+                    <td>
+                        <input type="number" id="adults" name="adults" value="0" min="0" oninput="updateSummary()">
+                        <td><button type="button" onclick="increment('adults')">+</button>
+                            <button type="button" onclick="decrement('adults')">-</button></td>
+                </tr>
+                <tr>
+                    <td><label for="children">Enfants</label></td>
+                    <td>
+                        <input type="number" id="children" name="children" value="0" min="0" oninput="updateSummary()">
+                        <td><button type="button" onclick="increment('children')">+</button>
+                        <button type="button" onclick="decrement('children')">-</button></td>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button type="button" id="addChildButton" onclick="createChildAgeField()">Ajouter un enfant</button></td>
+                </tr>
+                <tr id="childAgeInputs" style="display:none;">
+                    <td><label for="childAge">Âge des enfants:</label></td>
+                    <td><input type="text" id="childAge" name="childAge" oninput="updateSummary()"></td>
+                </tr>
+                
+                <tr>
+                    <td><label for="rooms">Chambres</label></td>
+                    <td>
+                        <input type="number" id="rooms" name="rooms" value="0" min="0" oninput="updateSummary()">
+                        <td><button type="button" onclick="increment('rooms')">+</button>
+                        <button type="button" onclick="decrement('rooms')">-</button></td>
+                    </td>
+                </tr>
+                <tr id="childrenAges" style="display:none;">
+                    <td><label for="childAge">Âge des enfants:</label></td>
+                    <td><input type="text" id="childAge" name="childAge" oninput="updateSummary()"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="businessTrip" name="businessTrip" onchange="updateSummary()"></td>
+                    <td><label for="businessTrip">Voyage pour le travail</label></td>
+                </tr>
+            </table>
+            <div>
+                <button type="button" onclick="submitForm()">Soumettre</button>
+                <button type="button" onclick="clearForm()">Effacer</button>
+            </div>
+        </form>
+        
+
+    <div id="userInputPanel" style="display:none;">
+        <h2>Récapitulatif de la réservation:</h2>
+        <p>Nombre d'adultes: <span id="displayAdults">0</span></p>
+        <p>Nombre d'enfants: <span id="displayChildren">0</span></p>
+        <p>Nombre de chambres: <span id="displayRooms">0</span></p>
+        <p>Voyage pour le travail: <span id="displayBusinessTrip">Non</span></p>
+
+    </div>
+</div>
+   
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
